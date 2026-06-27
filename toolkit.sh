@@ -45,6 +45,11 @@ do
             sudo bash modules/user_management.sh
             ;;
 
+	4)
+           
+            bash modules/file_operations.sh
+	    ;;
+
         7)
             echo
             echo "Thank you for using Linux Admin Toolkit!"
