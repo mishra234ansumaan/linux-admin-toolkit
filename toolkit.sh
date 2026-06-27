@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Check for root privileges
+#
+if [ "$EUID" -ne 0 ]
+then
+    echo " "
+    echo "  Please run this toolkit as root."
+    echo " "
+    exit 1
+fi
+
 while true
 do
     clear
@@ -23,6 +33,16 @@ do
     case $choice in
         1)
             bash modules/system_info.sh
+            ;;
+
+	2)
+           
+            bash modules/resource_monitor.sh
+            ;;
+
+	3)
+	   
+            sudo bash modules/user_management.sh
             ;;
 
         7)
