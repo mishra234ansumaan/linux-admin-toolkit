@@ -79,31 +79,91 @@ do
 
       3)
        clear
-       echo "Feature under development..."
+       echo "========== Change Password =========="
+       echo
+       read -p "Enter username: " username
+       if id "$username" &>/dev/null
+       then
+        if passwd "$username"
+        then
+         echo
+         echo "✅ Password changed successfully."
+        else
+         echo
+         echo "❌ Failed to change password."
+        fi
+      else 
+	echo " User '$username' does not exist." 
+      fi
        echo
        read -p "Press Enter to continue..."
        ;;
 
       4)
        clear
-       echo "Feature under development..."
+
+       echo "========== Lock User =========="
+       echo
+
+       read -p "Enter username: " username
+
+       if id "$username" &>/dev/null
+       then
+         if passwd -l "$username"
+         then
+            echo
+            echo "✅ User '$username' locked successfully."
+         else
+            echo
+            echo "❌ Failed to lock user."
+         fi
+      else
+        echo
+        echo " User '$username' does not exist."
+      fi
+
        echo
        read -p "Press Enter to continue..."
        ;;
 
-      5)
-       clear
-       echo "Feature under development..."
-       echo
-       read -p "Press Enter to continue..."
+       5)
+        clear
+
+        echo "========== Unlock User =========="
+        echo
+
+        read -p "Enter username: " username
+
+        if id "$username" &>/dev/null
+        then
+          if passwd -u "$username"
+          then
+            echo
+            echo "✅ User '$username' unlocked successfully."
+          else
+            echo
+            echo "❌ Failed to unlock user."
+          fi
+        else
+          echo
+          echo " User '$username' does not exist."
+        fi
+
+         echo
+         read -p "Press Enter to continue..."
        ;;
 
-      6)
-       clear
-       echo "Feature under development..."
-       echo
-       read -p "Press Enter to continue..."
-       ;;
+       6)
+        clear
+
+        echo "========== List of Users =========="
+        echo
+
+        awk -F: '$3 >= 1000 && $3 != 65534 {print $1}' /etc/passwd
+
+        echo
+        read -p "Press Enter to continue..."
+        ;;
 
       7) 
        break
