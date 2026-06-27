@@ -54,6 +54,11 @@ do
            
 	    bash modules/network_info.sh
 	    ;;
+
+	6)
+
+            bash modules/health_report.sh
+	    ;;
  
         7)
             echo
