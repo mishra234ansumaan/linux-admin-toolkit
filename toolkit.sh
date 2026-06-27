@@ -50,6 +50,11 @@ do
             bash modules/file_operations.sh
 	    ;;
 
+	5)
+           
+	    bash modules/network_info.sh
+	    ;;
+ 
         7)
             echo
             echo "Thank you for using Linux Admin Toolkit!"
